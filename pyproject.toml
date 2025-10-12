@@ -1,0 +1,13 @@
+[project]
+name = "jpwgad tools"
+description = "For convenience"
+version = "0.0.1"
+license = { file = "LICENSE" }
+
+[project.urls]
+Repository = "https://github.com/jpwgad/jpwgad-comfy"
+
+[tool.comfy]
+PublisherId = "jpwgad"
+DisplayName = "jpwgad"
+Icon = ""
