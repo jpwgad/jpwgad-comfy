@@ -32,22 +32,23 @@ class SizeInput:
 
         if swap_wh:
             return (h, w)
-        return (w, h)
+        else:
+            return (w, h)
 
 
-# OutputPath: date/time replacing
+# OutputPath: `strftime()` formatted output path
 class OutputPath:
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
                 "filename": ("STRING", {
-                    "default": "YYMMddhhmmss",
-                    "tooltip": "year:yyyy(or YY), month:MM, day:dd, hour:hh, min:mm, sec:ss"
+                    "default": "%y%m%d%H%M%S",
+                    "tooltip": "year:%Y(4-digit) or %y(2-digit), month:%m, day:%d, hour:%H, min:%M, sec:%S"
                 }),
                 "subdir": ("STRING", {
-                    "default": "yyyy-MM-dd",
-                    "tooltip": "year:yyyy(or YY), month:MM, day:dd, hour:hh, min:mm, sec:ss"
+                    "default": "%Y-%m-%d",
+                    "tooltip": "year:%Y(4-digit) or %y(2-digit), month:%m, day:%d, hour:%H, min:%M, sec:%S"
                 }),
             },
         }
@@ -59,12 +60,9 @@ class OutputPath:
     CATEGORY = "jpwgad"
 
     def outputpath(self, subdir, filename):
-        fmt_subdir = subdir.strip().replace("yyyy", "%Y").replace("YY", "%y").replace("MM", "%m").replace("dd", "%d").replace("hh", "%H").replace("mm", "%M").replace("ss", "%S")
-        fmt_filename = filename.strip().replace("yyyy", "%Y").replace("YY", "%y").replace("MM", "%m").replace("dd", "%d").replace("hh", "%H").replace("mm", "%M").replace("ss", "%S")
-
         try:
-            str_subdir = strftime(fmt_subdir)
-            str_filename = strftime(fmt_filename)
+            str_subdir = strftime(subdir)
+            str_filename = strftime(filename)
 
             if subdir == "":
                 str_combined = str_filename
