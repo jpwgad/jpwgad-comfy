@@ -1,4 +1,4 @@
-import datetime
+from time import strftime
 
 """
 ComfyUI カスタムノード: SizeInput
@@ -63,9 +63,8 @@ class OutputPath:
         fmt_filename = filename.strip().replace("yyyy", "%Y").replace("YY", "%y").replace("MM", "%m").replace("dd", "%d").replace("hh", "%H").replace("mm", "%M").replace("ss", "%S")
 
         try:
-            current_time = datetime.datetime.now()
-            str_subdir = current_time.strftime(fmt_subdir)
-            str_filename = current_time.strftime(fmt_filename)
+            str_subdir = strftime(fmt_subdir)
+            str_filename = strftime(fmt_filename)
 
             if subdir == "":
                 str_combined = str_filename
@@ -74,4 +73,7 @@ class OutputPath:
             return (str_filename, str_subdir, str_combined)
         except ValueError as e:
             raise ValueError(f"Invalid format: {str(e)}")
-    
+
+    @classmethod
+    def IS_CHANGED(cls, **kwargs):
+        return float("NaN")
