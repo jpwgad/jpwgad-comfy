@@ -4,7 +4,7 @@ ComfyUI nodes for my convenience.
 ## custom nodes
 
 ### SizeInput
-Image Size Input
+Image Size Input  
 from https://github.com/hayde0096/Comfyui-EasySettingpipes
 - inputs:
     - `width`
@@ -18,17 +18,17 @@ from https://github.com/hayde0096/Comfyui-EasySettingpipes
 ### OutputPath
 generate `strftime()` formatted output path
 - inputs:
-    - `filename` - default: `%y%m%d%H%M%S`
-        year:`%Y`, 2-digit year:`%y`, month:`%m`, day:`%d`,
+    - `filename` - default: `%y%m%d%H%M%S`  
+        year:`%Y`, 2-digit year:`%y`, month:`%m`, day:`%d`,  
         hour:`%H`, min:`%M`, sec:`%S`
-    - `subdir` - default: `%Y-%m-%d`
-        year:`%Y`, 2-digit year:`%y`, month:`%m`, day:`%d`,
+    - `subdir` - default: `%Y-%m-%d`  
+        year:`%Y`, 2-digit year:`%y`, month:`%m`, day:`%d`,  
         hour:`%H`, min:`%M`, sec:`%S`
    
 - outputs:
     - `FILENAME` - formatted `inputs.filename`
     - `SUBDIR` - formatted `inputs.subdir`
-    - `COMBINED` - `SUBDIR`/`FILENAME`
+    - `COMBINED` - `SUBDIR`/`FILENAME`  
         if `SUBDIR` is empty, simply `FILENAME`
 
 ## sample workflow
