@@ -1,13 +1,15 @@
-from .nodes import SizeInput, OutputPath
+from .nodes import SizeInput, OutputPath, AutoSelector
 
 NODE_CLASS_MAPPINGS = {
     "SizeInput": SizeInput,
     "OutputPath": OutputPath,
+    "AutoSelector": AutoSelector,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "SizeInput": "Image Size Input",
-    "OutputPath": "Date/Time based output path",
+    "OutputPath": "Output Path",
+    "AutoSelector": "Auto Selector",
 }
 
 __all__ = ["NODE_CLASS_MAPPINGS"]

@@ -75,3 +75,39 @@ class OutputPath:
     @classmethod
     def IS_CHANGED(cls, **kwargs):
         return float("NaN")
+
+
+# AutoSelector: Outputs the first valid input
+class AlwaysEqualProxy(str):
+    def __eq__(self, _):
+        return True
+
+    def __ne__(self, _):
+        return False
+
+any_type = AlwaysEqualProxy("*")
+
+class AutoSelector:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "optional": {
+                "in1": (any_type,),
+                "in2": (any_type,),
+                "in3": (any_type,),
+            },
+        }
+
+    RETURN_TYPES = (any_type,)
+    RETURN_NAMES = ("OUT",)
+    OUTPUT_TOOLTIPS = ("first valid input",)
+    FUNCTION = "autoselect"
+    CATEGORY = "jpwgad"
+
+    def autoselect(self, in1=None, in2=None, in3=None):
+        if in1 is not None:
+            return (in1,)
+        elif in2 is not None:
+            return (in2,)
+        else:
+            return (in3,)
